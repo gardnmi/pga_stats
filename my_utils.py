@@ -105,7 +105,7 @@ def transform_pga_data():
     final_df.to_csv('pga_stats.csv', index=False)
 
 
-def plot_feature_importances(df, threshold=0.7):
+def plot_feature_importances(df, threshold=0.7, table=True):
     """
     Plots 15 most important feature and the cumulative importance of feature.
     Prints the number of feature needed to reach threshold cumulative importance.
@@ -160,4 +160,5 @@ def plot_feature_importances(df, threshold=0.7):
     importance_index = np.min(np.where(df['cumulative_importance'] > threshold))
     print('%d feature required for %0.2f of cumulative importance' % (importance_index + 1, threshold))
 
-    return df
+    if table:
+        return df
